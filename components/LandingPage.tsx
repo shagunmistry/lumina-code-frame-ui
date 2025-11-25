@@ -10,36 +10,34 @@ interface LandingPageProps {
 
 export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
   return (
-    <div className="font-sans overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-20 px-6">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-slate-950 to-slate-950" />
+    <article className="font-sans overflow-x-hidden">
+      <section className="relative pt-20 pb-20 px-6" aria-labelledby="hero-heading">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-slate-950 to-slate-950" aria-hidden="true" />
 
         <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
+          <motion.header
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold mb-6">
-              <Zap size={12} className="fill-cyan-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold mb-6" role="status" aria-label="Version release">
+              <Zap size={12} className="fill-cyan-400" aria-hidden="true" />
               v1.0.0 Released
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
+            <h1 id="hero-heading" className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
               Present code with{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
                 intelligence.
               </span>
             </h1>
             <p className="text-lg text-gray-400 mb-8 leading-relaxed max-w-lg">
-              The React component that turns boring code blocks into beautiful,
-              shareable, AI-enhanced windows. Powered by Gemini.
+              Beautiful React code component with AI-powered explanations, syntax highlighting for 100+ programming languages, and seamless Gemini integration. Transform code blocks into stunning, shareable windows.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 font-mono text-sm text-gray-400">
-                <span className="text-cyan-400">$</span> npm install
-                lumina-code-frame
+            <nav className="flex flex-col sm:flex-row gap-4" aria-label="Quick actions">
+              <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 font-mono text-sm text-gray-400" role="region" aria-label="Installation command">
+                <span className="text-cyan-400" aria-hidden="true">$</span>
+                <span aria-label="npm install command">npm install lumina-code-frame</span>
                 <button
                   onClick={() =>
                     navigator.clipboard.writeText(
@@ -47,37 +45,41 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                     )
                   }
                   className="ml-4 hover:text-white"
+                  aria-label="Copy npm install command to clipboard"
+                  title="Copy to clipboard"
                 >
-                  <Copy size={14} />
+                  <Copy size={14} aria-hidden="true" />
                 </button>
               </div>
               <button
                 onClick={() => onNavigate("playground")}
                 className="px-6 py-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold transition-all flex items-center justify-center gap-2"
+                aria-label="Navigate to interactive playground"
               >
-                Try Playground <ArrowRight size={16} />
+                Try Playground <ArrowRight size={16} aria-hidden="true" />
               </button>
-            </div>
-          </motion.div>
+            </nav>
+          </motion.header>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
+            role="figure"
+            aria-label="Example code demonstration"
           >
-            {/* Decorative background elements */}
-            <div className="absolute -top-10 -right-10 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl" />
-            <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-cyan-500/30 rounded-full blur-3xl" />
+            <div className="absolute -top-10 -right-10 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl" aria-hidden="true" />
+            <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-cyan-500/30 rounded-full blur-3xl" aria-hidden="true" />
 
             <CodeFrame
               code={`import { CodeFrame } from 'lumina-code-frame';
 
 const MyComponent = () => (
-  <CodeFrame 
-    code="console.log('Hello World')" 
-    theme="neon" 
-    aiEnabled={true} 
+  <CodeFrame
+    code="console.log('Hello World')"
+    theme="neon"
+    aiEnabled={true}
   />
 );`}
               theme="neon"
@@ -88,58 +90,74 @@ const MyComponent = () => (
         </div>
       </section>
 
-      {/* Features Grid */}
       <section
         id="features"
         className="py-20 px-6 bg-slate-900/30 border-y border-white/5"
+        aria-labelledby="features-heading"
       >
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">
-              More than just a highlighter
+          <header className="text-center mb-16">
+            <h2 id="features-heading" className="text-3xl font-bold mb-4">
+              Enterprise-Grade Code Presentation for React Developers
             </h2>
-            <p className="text-gray-400">
-              Everything you need to showcase code professionally.
+            <p className="text-gray-400 text-lg">
+              Everything you need to showcase code professionally with AI-powered intelligence.
             </p>
-          </div>
+          </header>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8" role="list">
             {[
               {
                 icon: <Code2 className="text-pink-400" />,
-                title: "Syntax Highlighting",
-                desc: "Supports 100+ languages with automatic detection and vibrant themes.",
+                title: "Advanced Syntax Highlighting",
+                desc: "Support for 100+ programming languages including JavaScript, TypeScript, Python, Java, Go, Rust, and more. Automatic language detection with vibrant, customizable themes.",
+                keywords: "syntax highlighting, code formatting, multi-language support"
               },
               {
                 icon: <Cpu className="text-cyan-400" />,
-                title: "Gemini Integration",
-                desc: "Let users refactor, explain, or fix bugs directly within the code window.",
+                title: "AI-Powered Code Intelligence",
+                desc: "Integrated Gemini AI lets developers refactor code, get instant explanations, detect bugs, and receive intelligent suggestions directly within the component.",
+                keywords: "AI code assistant, code refactoring, bug detection"
               },
               {
                 icon: <Box className="text-purple-400" />,
-                title: "Customizable UI",
-                desc: "Control gradients, padding, shadows, and window controls with simple props.",
+                title: "Fully Customizable Design",
+                desc: "Complete control over appearance with theme props, custom gradients, configurable padding, shadows, window controls, and responsive layouts for any design system.",
+                keywords: "customizable UI, theming, responsive design"
               },
             ].map((feature, i) => (
-              <motion.div
+              <motion.article
                 key={i}
                 whileHover={{ y: -5 }}
                 className="p-6 rounded-2xl bg-slate-800/50 border border-white/5 hover:border-white/10 transition-all"
+                role="listitem"
               >
-                <div className="w-12 h-12 rounded-lg bg-slate-900 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-lg bg-slate-900 flex items-center justify-center mb-4" aria-hidden="true">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-gray-400 text-sm">{feature.desc}</p>
-              </motion.div>
+                <p className="text-gray-400 text-sm mb-3">{feature.desc}</p>
+                <span className="text-xs text-gray-600 italic" aria-label="Related keywords">{feature.keywords}</span>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      <footer className="bg-slate-950 border-t border-white/5 py-12 text-center text-gray-500 text-sm">
-        <p>© 2024 Lumina Code Frame. Built with React, Tailwind & Gemini.</p>
+      <footer className="bg-slate-950 border-t border-white/5 py-12 text-center text-gray-500 text-sm" role="contentinfo">
+        <p>
+          © 2024 Lumina Code Frame.
+          <span className="mx-2" aria-hidden="true">|</span>
+          Open-source React component library for developers
+          <span className="mx-2" aria-hidden="true">|</span>
+          Built with React, TypeScript, Tailwind CSS & Google Gemini AI
+        </p>
+        <nav className="mt-4" aria-label="Footer links">
+          <span className="text-gray-600 text-xs">
+            Keywords: React code component, syntax highlighter, AI code assistant, developer tools, npm package, TypeScript support
+          </span>
+        </nav>
       </footer>
-    </div>
+    </article>
   );
 };
