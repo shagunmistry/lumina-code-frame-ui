@@ -71,10 +71,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-cyan-500/30 rounded-full blur-3xl" />
 
             <CodeFrame
-              code={`import { LuminaFrame } from 'lumina-code-frame';
+              code={`import { CodeFrame } from 'lumina-code-frame';
 
 const MyComponent = () => (
-  <LuminaFrame 
+  <CodeFrame 
     code="console.log('Hello World')" 
     theme="neon" 
     aiEnabled={true} 
