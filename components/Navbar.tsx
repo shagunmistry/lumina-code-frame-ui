@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
 
         <div className="flex items-center gap-4">
           <a 
-            href="https://github.com" 
+            href="https://github.com/shagunmistry/lumina-code-frame-ui" 
             target="_blank"
             className="hidden md:flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
           >
