@@ -9,6 +9,17 @@ interface LandingPageProps {
 }
 
 export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
+  const themes = ["ocean", "neon", "sunset", "forest", "noir", "midnight", "warm"];
+  const [currentThemeIndex, setCurrentThemeIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentThemeIndex((prev) => (prev + 1) % themes.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [themes.length]);
+
   return (
     <article className="font-sans overflow-x-hidden">
       <section className="relative pt-20 pb-20 px-6" aria-labelledby="hero-heading">
@@ -59,13 +70,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 Try Playground <ArrowRight size={16} aria-hidden="true" />
               </button>
             </nav>
+
+            <div className="mt-6">
+              <a href="https://www.producthunt.com/products/lumina-code-frame?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-lumina&#0045;code&#0045;frame" target="_blank" rel="noopener noreferrer">
+                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1042820&theme=dark&t=1764262583081" alt="Lumina Code Frame - Integrate a beautiful Code preview on your website. | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
+              </a>
+            </div>
           </motion.header>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="relative transition-all duration-1000"
             role="figure"
             aria-label="Example code demonstration"
           >
@@ -82,7 +99,7 @@ const MyComponent = () => (
     aiEnabled={true}
   />
 );`}
-              theme="neon"
+              theme={themes[currentThemeIndex] as any}
               language="typescript"
               title="ExampleUsage.tsx"
             />
